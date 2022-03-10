@@ -13,28 +13,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bebold.srjhonas.Semillero.model.CiudadXHacedor;
-import com.bebold.srjhonas.Semillero.service.CiudadXHacedorService;
+
+import com.bebold.srjhonas.Semillero.model.Hacedor;
+
+import com.bebold.srjhonas.Semillero.service.HacedorService;
 
 @CrossOrigin(origins = "*", methods = { RequestMethod.POST, RequestMethod.GET, RequestMethod.PUT,
 		RequestMethod.DELETE } )
 @RestController
 @RequestMapping("/api")
-public class CiudadXHacedorController {
-
-	@Autowired
-	CiudadXHacedorService ciudadXHacedorService;
+public class HacedorController {
 	
-	@GetMapping("/CiudadXHacedor")
-	public ResponseEntity<?> TraerCiudadXHacedor(){
-		return ResponseEntity.ok().body(ciudadXHacedorService.getAllCiudadXHacedor());
+	@Autowired
+	HacedorService hacedorService;
+	
+	@GetMapping("/hacedores")
+	public ResponseEntity<?> TraerHacedores(){
+		return ResponseEntity.ok().body(hacedorService.getAllHacedores());
 	}
 	
-	@PostMapping("/CiudadXHacedor")
-	public ResponseEntity<CiudadXHacedor> createCiudadXHacedor(@RequestBody CiudadXHacedor ciudadXHacedor) {
+	@PostMapping("/hacedores")
+	public ResponseEntity<Hacedor> createHacedor(@RequestBody Hacedor hacedor) {
 		try {
-			CiudadXHacedor _ciudadXHacedor = ciudadXHacedorService.CrearCiudadXHacedor(ciudadXHacedor);		
-			return new ResponseEntity<>(_ciudadXHacedor, HttpStatus.CREATED);
+			Hacedor _hacedor = hacedorService.CrearHacedor(hacedor);		
+			return new ResponseEntity<>(_hacedor, HttpStatus.CREATED);
 		}catch (Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -42,16 +44,15 @@ public class CiudadXHacedorController {
 	}
 	
 	
-	@DeleteMapping("/CiudadXHacedor/{id}")
-	public ResponseEntity<HttpStatus> deleteCiudadXHacedor(@PathVariable("id") Integer id_ciudadXHacedor) {
+	@DeleteMapping("/hacedores/{id}")
+	public ResponseEntity<HttpStatus> deleteHacedor(@PathVariable("id") Integer id_hacedor) {
 		try {
-			ciudadXHacedorService.deleteCiudadXHacedor(id_ciudadXHacedor);
+			hacedorService.deleteHacedor(id_hacedor);
 			return new ResponseEntity<>(HttpStatus.ACCEPTED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 		
-	
 
 }

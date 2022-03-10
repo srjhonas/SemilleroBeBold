@@ -13,28 +13,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bebold.srjhonas.Semillero.model.CiudadXHacedor;
-import com.bebold.srjhonas.Semillero.service.CiudadXHacedorService;
+import com.bebold.srjhonas.Semillero.model.Rechazo;
+import com.bebold.srjhonas.Semillero.service.RechazoService;
 
 @CrossOrigin(origins = "*", methods = { RequestMethod.POST, RequestMethod.GET, RequestMethod.PUT,
 		RequestMethod.DELETE } )
 @RestController
 @RequestMapping("/api")
-public class CiudadXHacedorController {
-
+public class RechazoController {
 	@Autowired
-	CiudadXHacedorService ciudadXHacedorService;
+	RechazoService rechazoService;
 	
-	@GetMapping("/CiudadXHacedor")
-	public ResponseEntity<?> TraerCiudadXHacedor(){
-		return ResponseEntity.ok().body(ciudadXHacedorService.getAllCiudadXHacedor());
+	@GetMapping("/Rechazo")
+	public ResponseEntity<?> TraerRechazo(){
+		return ResponseEntity.ok().body(rechazoService.getAllRechazo());
 	}
 	
-	@PostMapping("/CiudadXHacedor")
-	public ResponseEntity<CiudadXHacedor> createCiudadXHacedor(@RequestBody CiudadXHacedor ciudadXHacedor) {
+	@PostMapping("/Rechazo")
+	public ResponseEntity<Rechazo> createRechazo(@RequestBody Rechazo rechazo) {
 		try {
-			CiudadXHacedor _ciudadXHacedor = ciudadXHacedorService.CrearCiudadXHacedor(ciudadXHacedor);		
-			return new ResponseEntity<>(_ciudadXHacedor, HttpStatus.CREATED);
+			Rechazo _rechazo = rechazoService.CrearRechazo(rechazo);		
+			return new ResponseEntity<>(_rechazo, HttpStatus.CREATED);
 		}catch (Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -42,16 +41,14 @@ public class CiudadXHacedorController {
 	}
 	
 	
-	@DeleteMapping("/CiudadXHacedor/{id}")
-	public ResponseEntity<HttpStatus> deleteCiudadXHacedor(@PathVariable("id") Integer id_ciudadXHacedor) {
+	@DeleteMapping("/Rechazo/{id}")
+	public ResponseEntity<HttpStatus> deleteRechazo(@PathVariable("id") Integer id_rechazo) {
 		try {
-			ciudadXHacedorService.deleteCiudadXHacedor(id_ciudadXHacedor);
+			rechazoService.deleteRechazo(id_rechazo);
 			return new ResponseEntity<>(HttpStatus.ACCEPTED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 		
-	
-
 }

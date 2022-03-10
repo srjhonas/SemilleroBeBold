@@ -13,28 +13,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bebold.srjhonas.Semillero.model.CiudadXHacedor;
-import com.bebold.srjhonas.Semillero.service.CiudadXHacedorService;
+import com.bebold.srjhonas.Semillero.model.Admin;
+import com.bebold.srjhonas.Semillero.service.AdminService;
+
 
 @CrossOrigin(origins = "*", methods = { RequestMethod.POST, RequestMethod.GET, RequestMethod.PUT,
 		RequestMethod.DELETE } )
 @RestController
 @RequestMapping("/api")
-public class CiudadXHacedorController {
-
+public class AdminController {
 	@Autowired
-	CiudadXHacedorService ciudadXHacedorService;
+	AdminService adminService;
 	
-	@GetMapping("/CiudadXHacedor")
-	public ResponseEntity<?> TraerCiudadXHacedor(){
-		return ResponseEntity.ok().body(ciudadXHacedorService.getAllCiudadXHacedor());
+	@GetMapping("/admin")
+	public ResponseEntity<?> TraerAdmin(){
+		return ResponseEntity.ok().body(adminService.getAllAdmin());
 	}
 	
-	@PostMapping("/CiudadXHacedor")
-	public ResponseEntity<CiudadXHacedor> createCiudadXHacedor(@RequestBody CiudadXHacedor ciudadXHacedor) {
+	@PostMapping("/admin")
+	public ResponseEntity<Admin> createAdmin(@RequestBody Admin admin) {
 		try {
-			CiudadXHacedor _ciudadXHacedor = ciudadXHacedorService.CrearCiudadXHacedor(ciudadXHacedor);		
-			return new ResponseEntity<>(_ciudadXHacedor, HttpStatus.CREATED);
+			Admin _admin = adminService.CrearAdmin(admin);		
+			return new ResponseEntity<>(_admin, HttpStatus.CREATED);
 		}catch (Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -42,10 +42,10 @@ public class CiudadXHacedorController {
 	}
 	
 	
-	@DeleteMapping("/CiudadXHacedor/{id}")
-	public ResponseEntity<HttpStatus> deleteCiudadXHacedor(@PathVariable("id") Integer id_ciudadXHacedor) {
+	@DeleteMapping("/admin/{id}")
+	public ResponseEntity<HttpStatus> deleteAdmin(@PathVariable("id") Integer id_admin) {
 		try {
-			ciudadXHacedorService.deleteCiudadXHacedor(id_ciudadXHacedor);
+			adminService.deleteAdmin(id_admin);
 			return new ResponseEntity<>(HttpStatus.ACCEPTED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

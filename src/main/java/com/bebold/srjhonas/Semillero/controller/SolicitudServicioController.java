@@ -13,28 +13,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bebold.srjhonas.Semillero.model.CiudadXHacedor;
-import com.bebold.srjhonas.Semillero.service.CiudadXHacedorService;
+
+import com.bebold.srjhonas.Semillero.model.SolicitudServicio;
+import com.bebold.srjhonas.Semillero.service.SolicitudServicioService;
 
 @CrossOrigin(origins = "*", methods = { RequestMethod.POST, RequestMethod.GET, RequestMethod.PUT,
 		RequestMethod.DELETE } )
 @RestController
 @RequestMapping("/api")
-public class CiudadXHacedorController {
-
+public class SolicitudServicioController {
 	@Autowired
-	CiudadXHacedorService ciudadXHacedorService;
+	SolicitudServicioService solicitudServicioService;
 	
-	@GetMapping("/CiudadXHacedor")
-	public ResponseEntity<?> TraerCiudadXHacedor(){
-		return ResponseEntity.ok().body(ciudadXHacedorService.getAllCiudadXHacedor());
+	@GetMapping("/SolicitudServicio")
+	public ResponseEntity<?> TraerSolicitudServicio(){
+		return ResponseEntity.ok().body(solicitudServicioService.getAllSolicitudServicio());
 	}
 	
-	@PostMapping("/CiudadXHacedor")
-	public ResponseEntity<CiudadXHacedor> createCiudadXHacedor(@RequestBody CiudadXHacedor ciudadXHacedor) {
+	@PostMapping("/SolicitudServicio")
+	public ResponseEntity<SolicitudServicio> createSolicitudServicio(@RequestBody SolicitudServicio solicitudServicio) {
 		try {
-			CiudadXHacedor _ciudadXHacedor = ciudadXHacedorService.CrearCiudadXHacedor(ciudadXHacedor);		
-			return new ResponseEntity<>(_ciudadXHacedor, HttpStatus.CREATED);
+			SolicitudServicio _solicitudServicio = solicitudServicioService.CrearSolicitudServicio(solicitudServicio);		
+			return new ResponseEntity<>(_solicitudServicio, HttpStatus.CREATED);
 		}catch (Exception e) {
 			e.printStackTrace();
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -42,16 +42,15 @@ public class CiudadXHacedorController {
 	}
 	
 	
-	@DeleteMapping("/CiudadXHacedor/{id}")
-	public ResponseEntity<HttpStatus> deleteCiudadXHacedor(@PathVariable("id") Integer id_ciudadXHacedor) {
+	@DeleteMapping("/SolicitudServicio/{id}")
+	public ResponseEntity<HttpStatus> deleteSolicitudServicio(@PathVariable("id") Integer id_sol_serv) {
 		try {
-			ciudadXHacedorService.deleteCiudadXHacedor(id_ciudadXHacedor);
+			solicitudServicioService.deleteSolicitudServicio(id_sol_serv);
 			return new ResponseEntity<>(HttpStatus.ACCEPTED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 		
-	
 
 }
