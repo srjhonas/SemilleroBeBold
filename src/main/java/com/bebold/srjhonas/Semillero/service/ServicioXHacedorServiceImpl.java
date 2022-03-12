@@ -30,4 +30,11 @@ public class ServicioXHacedorServiceImpl implements ServicioXHacedorService {
 		servicioXHacedorRepository.deleteById(id_servicioXHacedor);
 	}
 
+	@Override
+	public List<String> hacedoresAptos(Integer id_tipo_servicio, Integer id_ciudad, Integer precio_esperado) {
+		return servicioXHacedorRepository.hacedoresAptos(id_tipo_servicio, id_ciudad, precio_esperado);
+	}
+
+	
+
 }

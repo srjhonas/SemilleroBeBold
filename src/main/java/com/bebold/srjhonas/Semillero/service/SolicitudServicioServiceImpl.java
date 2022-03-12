@@ -1,6 +1,8 @@
 package com.bebold.srjhonas.Semillero.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +28,11 @@ public class SolicitudServicioServiceImpl implements SolicitudServicioService{
 	@Override
 	public void deleteSolicitudServicio(Integer id_sol_serv) {
 		solicitudServicioRepository.deleteById(id_sol_serv);
+	}
+
+	@Override
+	public Optional<SolicitudServicio> solicitudServicioById(Integer id_sol_serv) {
+		return solicitudServicioRepository.findById(id_sol_serv);
 	}
 
 }

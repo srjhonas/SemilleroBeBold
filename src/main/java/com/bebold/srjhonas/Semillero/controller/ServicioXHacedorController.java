@@ -51,6 +51,12 @@ public class ServicioXHacedorController {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-		
+	/// COdigo Nuevo
+	@GetMapping("/HacedoresAptos/{ciudad}&{servicio}&{valor}")
+	public ResponseEntity<?> buscarHacedoresAptos(@PathVariable("ciudad") Integer id_ciudad, 
+			@PathVariable("servicio") Integer id_tipo_servicio,
+			@PathVariable("valor") Integer precio_esperado){
+		return ResponseEntity.ok().body(servicioXHacedorService.hacedoresAptos(id_tipo_servicio, id_ciudad, precio_esperado));
+	}
 	
 }
