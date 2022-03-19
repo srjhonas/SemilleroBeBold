@@ -6,8 +6,10 @@ import com.bebold.srjhonas.Semillero.model.CiudadXHacedor;
 
 
 
+
 public interface CiudadXHacedorService {
 	public List<CiudadXHacedor> getAllCiudadXHacedor();
 	public CiudadXHacedor CrearCiudadXHacedor(CiudadXHacedor ciudadXHacedor);
 	public void deleteCiudadXHacedor(Integer id_ciudadXHacedor);
+	public List<Object> ciudadesXHacedor(Integer id_hacedor);
 }

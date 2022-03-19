@@ -32,4 +32,10 @@ public class HacedorServiceImpl implements HacedorService{
 		
 	}
 
+	@Override
+	public List<Hacedor> validarLoginH(String mailH) {
+		List<Hacedor> auxH = hacedorRepository.findByEmailhacedor(mailH);
+		return auxH;
+	}
+
 }

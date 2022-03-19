@@ -1,5 +1,6 @@
 package com.bebold.srjhonas.Semillero.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,8 @@ public class Cliente{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_cliente;
 	private String nombre_cliente;
-	private String email_cliente;
+	@Column(name="email_cliente")
+	private String emailCliente;
 	private String telefono_cliente;
 	private String password_cliente;
 	private String tipo_usuario;
@@ -26,12 +28,12 @@ public class Cliente{
 	public Cliente() {
 		super();
 	}
-	public Cliente(Integer id_cliente, String nombre_cliente, String email_cliente, String telefono_cliente,
+	public Cliente(Integer id_cliente, String nombre_cliente, String emailCliente, String telefono_cliente,
 			String password_cliente, String tipo_usuario) {
 		super();
 		this.id_cliente = id_cliente;
 		this.nombre_cliente = nombre_cliente;
-		this.email_cliente = email_cliente;
+		this.emailCliente = emailCliente;
 		this.telefono_cliente = telefono_cliente;
 		this.password_cliente = password_cliente;
 		this.tipo_usuario = tipo_usuario;
@@ -48,11 +50,11 @@ public class Cliente{
 	public void setNombre_cliente(String nombre_cliente) {
 		this.nombre_cliente = nombre_cliente;
 	}
-	public String getEmail_cliente() {
-		return email_cliente;
+	public String getEmailCliente() {
+		return emailCliente;
 	}
-	public void setEmail_cliente(String email_cliente) {
-		this.email_cliente = email_cliente;
+	public void setEmailCliente(String emailCliente) {
+		this.emailCliente = emailCliente;
 	}
 	public String getTelefono_cliente() {
 		return telefono_cliente;
@@ -73,5 +75,5 @@ public class Cliente{
 		this.tipo_usuario = tipo_usuario;
 	}
 	
-	
+		
 }

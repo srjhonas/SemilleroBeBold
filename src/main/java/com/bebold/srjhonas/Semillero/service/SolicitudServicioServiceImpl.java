@@ -35,4 +35,16 @@ public class SolicitudServicioServiceImpl implements SolicitudServicioService{
 		return solicitudServicioRepository.findById(id_sol_serv);
 	}
 
+	@Override
+	public List<Object> ListadoSolServicios() {
+		
+		return solicitudServicioRepository.ListadoSolicitudesServ();
+	}
+
+	@Override
+	public Integer numSolServicio() {
+		
+		return solicitudServicioRepository.numSolicitud();
+	}
+
 }

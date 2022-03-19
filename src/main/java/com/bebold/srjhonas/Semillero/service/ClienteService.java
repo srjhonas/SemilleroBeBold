@@ -8,4 +8,5 @@ public interface ClienteService {
 	public List<Cliente> getAllClientes();
 	public Cliente CrearCliente(Cliente cliente);
 	public void deleteCliente(Integer id_cliente);
+	public List<Cliente> validarLogin(String mail);
 }

@@ -71,7 +71,15 @@ public class SolicitudServicioController {
 		}
 	}
 	
+	@GetMapping("/ListaSolicitudServicio")
+	public ResponseEntity<?> ListaSolicitudServicio(){
+		return ResponseEntity.ok().body(solicitudServicioService.ListadoSolServicios());
+	}
 	
+	@GetMapping("/numSolicitud")
+	public ResponseEntity<?> numSolicitud(){
+		return ResponseEntity.ok().body(solicitudServicioService.numSolServicio());
+	}
 	
 		
 

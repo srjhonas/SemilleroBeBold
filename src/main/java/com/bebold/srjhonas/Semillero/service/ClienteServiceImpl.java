@@ -3,7 +3,6 @@ package com.bebold.srjhonas.Semillero.service;
 import java.util.List;
 
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,6 +29,14 @@ public class ClienteServiceImpl implements ClienteService {
 	@Override
 	public void deleteCliente(Integer id_cliente) {
 		clienteRepository.deleteById(id_cliente);
+	}
+
+	@Override
+	public List<Cliente> validarLogin(String mail) {
+		List<Cliente> aux = clienteRepository.findByEmailCliente(mail);
+		return aux;
+	
+		
 	}
 
 }

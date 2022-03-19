@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bebold.srjhonas.Semillero.model.ServicioXHacedor;
@@ -57,6 +58,11 @@ public class ServicioXHacedorController {
 			@PathVariable("servicio") Integer id_tipo_servicio,
 			@PathVariable("valor") Integer precio_esperado){
 		return ResponseEntity.ok().body(servicioXHacedorService.hacedoresAptos(id_tipo_servicio, id_ciudad, precio_esperado));
+	}
+	
+	@GetMapping("/ServicioXHacedor/{id}")
+	public ResponseEntity<?> listadoServicioXHacedor(@PathVariable("id") Integer id_hacedor){
+		return ResponseEntity.ok().body(servicioXHacedorService.listadoServiciosXHacedor(id_hacedor));
 	}
 	
 }

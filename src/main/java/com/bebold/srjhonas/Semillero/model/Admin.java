@@ -1,5 +1,6 @@
 package com.bebold.srjhonas.Semillero.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,21 +15,23 @@ public class Admin {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_admin;
 	private String nombre_admin;
-	private String email_admin;
+	@Column(name="email_admin")
+	private String emailadmin;
 	private String telefono_admin;
 	private String password_admin;
 	private String tipo_usuario;
 	
 	
+	
 	public Admin() {
 		super();
 	}
-	public Admin(Integer id_admin, String nombre_admin, String email_admin, String telefono_admin,
-			String password_admin, String tipo_usuario) {
+	public Admin(Integer id_admin, String nombre_admin, String emailadmin, String telefono_admin, String password_admin,
+			String tipo_usuario) {
 		super();
 		this.id_admin = id_admin;
 		this.nombre_admin = nombre_admin;
-		this.email_admin = email_admin;
+		this.emailadmin = emailadmin;
 		this.telefono_admin = telefono_admin;
 		this.password_admin = password_admin;
 		this.tipo_usuario = tipo_usuario;
@@ -45,11 +48,11 @@ public class Admin {
 	public void setNombre_admin(String nombre_admin) {
 		this.nombre_admin = nombre_admin;
 	}
-	public String getEmail_admin() {
-		return email_admin;
+	public String getEmailadmin() {
+		return emailadmin;
 	}
-	public void setEmail_admin(String email_admin) {
-		this.email_admin = email_admin;
+	public void setEmailadmin(String emailadmin) {
+		this.emailadmin = emailadmin;
 	}
 	public String getTelefono_admin() {
 		return telefono_admin;
@@ -70,5 +73,6 @@ public class Admin {
 		this.tipo_usuario = tipo_usuario;
 	}
 	
+		
 	
 }

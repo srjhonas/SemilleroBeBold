@@ -31,8 +31,14 @@ public class ServicioXHacedorServiceImpl implements ServicioXHacedorService {
 	}
 
 	@Override
-	public List<String> hacedoresAptos(Integer id_tipo_servicio, Integer id_ciudad, Integer precio_esperado) {
+	public List<Object> hacedoresAptos(Integer id_tipo_servicio, Integer id_ciudad, Integer precio_esperado) {
+		
 		return servicioXHacedorRepository.hacedoresAptos(id_tipo_servicio, id_ciudad, precio_esperado);
+	}
+
+	@Override
+	public List<Object> listadoServiciosXHacedor(Integer id_hacedor) {
+		return servicioXHacedorRepository.listadoServiciosXHacedor(id_hacedor);
 	}
 
 	

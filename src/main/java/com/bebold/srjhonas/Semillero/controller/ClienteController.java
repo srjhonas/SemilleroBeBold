@@ -57,6 +57,10 @@ public class ClienteController {
 		}
 	}
 		
+	@GetMapping("/clientes/login/{mail}")
+	public ResponseEntity<?> loginCliente(@PathVariable("mail") String email_cliente){
+		return ResponseEntity.ok().body(clienteService.validarLogin(email_cliente));
+	}
 	
 	
 }

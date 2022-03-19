@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bebold.srjhonas.Semillero.model.CiudadXHacedor;
+
 import com.bebold.srjhonas.Semillero.repository.CiudadXHacedorRepository;
 
 @Service
@@ -28,6 +29,11 @@ public class CiudadXHacedorImpl implements CiudadXHacedorService{
 	@Override
 	public void deleteCiudadXHacedor(Integer id_ciudadXHacedor) {
 		ciudadXHacedorRepository.deleteById(id_ciudadXHacedor);
+	}
+
+	@Override
+	public List<Object> ciudadesXHacedor(Integer id_hacedor) {
+		return ciudadXHacedorRepository.listadoCiudadesXHacedor(id_hacedor);
 	}
 
 }

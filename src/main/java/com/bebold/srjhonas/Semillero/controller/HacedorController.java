@@ -53,6 +53,11 @@ public class HacedorController {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	@GetMapping("/hacedores/login/{mail}")
+	public ResponseEntity<?> loginHacedor(@PathVariable("mail") String emailHacedor){
+		return ResponseEntity.ok().body(hacedorService.validarLoginH(emailHacedor));
+	}
 		
 
 }

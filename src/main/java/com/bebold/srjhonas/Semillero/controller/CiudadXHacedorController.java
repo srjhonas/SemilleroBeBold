@@ -52,6 +52,9 @@ public class CiudadXHacedorController {
 		}
 	}
 		
-	
+	@GetMapping("/CiudadXHacedor/{idhacedor}")
+	public ResponseEntity<?> CiudadesXHacedor(@PathVariable("idhacedor") Integer id_hacedor){
+		return ResponseEntity.ok().body(ciudadXHacedorService.ciudadesXHacedor(id_hacedor));
+	}
 
 }
