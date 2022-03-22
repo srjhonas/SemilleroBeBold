@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.bebold.srjhonas.Semillero.model.SolicitudServicio;
+
 import com.bebold.srjhonas.Semillero.service.SolicitudServicioService;
 
 
@@ -28,6 +29,8 @@ import com.bebold.srjhonas.Semillero.service.SolicitudServicioService;
 public class SolicitudServicioController {
 	@Autowired
 	SolicitudServicioService solicitudServicioService;
+	
+
 	
 	@GetMapping("/SolicitudServicio")
 	public ResponseEntity<?> TraerSolicitudServicio(){
@@ -62,23 +65,33 @@ public class SolicitudServicioController {
 	public ResponseEntity<?> aceptarServicio(@PathVariable("id") Integer id, @RequestBody SolicitudServicio solserv){
 		Optional<SolicitudServicio> solServData = solicitudServicioService.solicitudServicioById(id);
 		if(solServData.isPresent()) {
+			//insertando condicion para validar si servicio esta disponible
 			SolicitudServicio _solicitudServicio = solServData.get();
-			_solicitudServicio.setEstado_sol_serv(solserv.getEstado_sol_serv());
-			_solicitudServicio.setHacedor(solserv.getHacedor());
-			return new ResponseEntity<>(solicitudServicioService.CrearSolicitudServicio(_solicitudServicio), HttpStatus.OK);
+			if(_solicitudServicio.getEstado_sol_serv()==1) {
+				_solicitudServicio.setEstado_sol_serv(solserv.getEstado_sol_serv());
+				_solicitudServicio.setHacedor(solserv.getHacedor());
+				return new ResponseEntity<>(solicitudServicioService.CrearSolicitudServicio(_solicitudServicio), HttpStatus.OK);
+			}else {
+				return new ResponseEntity<>("Servicio ya fue asignado", HttpStatus.OK);
+			}
 		}else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>("No existe la solicitud",HttpStatus.NOT_FOUND);
 		}
 	}
 	
-	@GetMapping("/ListaSolicitudServicio")
-	public ResponseEntity<?> ListaSolicitudServicio(){
-		return ResponseEntity.ok().body(solicitudServicioService.ListadoSolServicios());
+	@GetMapping("/ListaSolicitudServicio/{idhacedor}")
+	public ResponseEntity<?> ListaSolicitudServicio(@PathVariable("idhacedor") Integer id_hacedor){
+		return ResponseEntity.ok().body(solicitudServicioService.ListadoSolServicios(id_hacedor));
 	}
 	
 	@GetMapping("/numSolicitud")
 	public ResponseEntity<?> numSolicitud(){
 		return ResponseEntity.ok().body(solicitudServicioService.numSolServicio());
+	}
+	
+	@GetMapping("/ListaSolicitudServicioCli/{idcliente}")
+	public ResponseEntity<?> PanelSolicitudesCliente(@PathVariable("idcliente") Integer id_cliente){
+		return ResponseEntity.ok().body(solicitudServicioService.PanelSolicitudesCliente(id_cliente));
 	}
 	
 		

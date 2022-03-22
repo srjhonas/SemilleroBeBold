@@ -36,15 +36,31 @@ public class SolicitudServicioServiceImpl implements SolicitudServicioService{
 	}
 
 	@Override
-	public List<Object> ListadoSolServicios() {
-		
-		return solicitudServicioRepository.ListadoSolicitudesServ();
+	public List<Object> ListadoSolServicios(Integer id_hacedor) {
+		return solicitudServicioRepository.ListadoSolicitudesServ(id_hacedor);
 	}
 
 	@Override
 	public Integer numSolServicio() {
-		
 		return solicitudServicioRepository.numSolicitud();
 	}
 
+//	@Override
+//	public List<Object> ListadoSolServiciosCli(Integer id_cliente) {
+//		return solicitudServicioRepository.ListadoSolicitudesServ(id_cliente);
+//	}
+
+//	@Override
+//	public List<SolicitudServicio> ServiciosSolicitados(Integer cliente) {
+//		
+//		return solicitudServicioRepository.findByCliente(cliente);
+//	}
+
+	@Override
+	public List<Object> PanelSolicitudesCliente(Integer id_cliente) {
+		
+		return solicitudServicioRepository.PanelSolicitudesCliente(id_cliente);
+	}
+
+	
 }

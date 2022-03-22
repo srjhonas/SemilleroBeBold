@@ -19,4 +19,9 @@ public interface ServicioHacedorAptoRepository extends JpaRepository<ServicioHac
 			+ "where HA.hacedor_apto = ?", nativeQuery = true)
 	List<Object> MuroSolicitudes(Integer id_hacedor);
 	
+	
+	List<ServicioHacedorApto> findByIdsolserv(Integer idsolserv);
+	 
+	
+	
 }

@@ -7,4 +7,7 @@ import com.bebold.srjhonas.Semillero.model.ServicioHacedorApto;
 public interface ServicioHacedorAptoService {
 	public ServicioHacedorApto CrearHacedorApto(ServicioHacedorApto servicioHacedorApto);
 	public List<Object> MuroSolicitudes(Integer id_hacedor);
+	
+	public void QuitarSS(Integer idsolserv);
+	
 }

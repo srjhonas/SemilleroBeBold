@@ -1,5 +1,6 @@
 package com.bebold.srjhonas.Semillero.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +13,8 @@ public class ServicioHacedorApto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_lista;
-	private Integer id_sol_serv;
+	@Column(name="id_sol_serv")
+	private Integer idsolserv;
 	private Integer estado_sol_serv; 
 	private String direccion_sol_serv; 
 	private Integer tipo_servicio; 
@@ -28,12 +30,12 @@ public class ServicioHacedorApto {
 	public ServicioHacedorApto() {
 		super();
 	}
-	public ServicioHacedorApto(Integer id_lista, Integer id_sol_serv, Integer estado_sol_serv,
-			String direccion_sol_serv, Integer tipo_servicio, Integer cliente, Integer hacedor, Integer ciudad_servicio,
-			Integer valor_ofrecido, String observaciones, Integer hacedor_apto) {
+	public ServicioHacedorApto(Integer id_lista, Integer idsolserv, Integer estado_sol_serv, String direccion_sol_serv,
+			Integer tipo_servicio, Integer cliente, Integer hacedor, Integer ciudad_servicio, Integer valor_ofrecido,
+			String observaciones, Integer hacedor_apto) {
 		super();
 		this.id_lista = id_lista;
-		this.id_sol_serv = id_sol_serv;
+		this.idsolserv = idsolserv;
 		this.estado_sol_serv = estado_sol_serv;
 		this.direccion_sol_serv = direccion_sol_serv;
 		this.tipo_servicio = tipo_servicio;
@@ -50,11 +52,11 @@ public class ServicioHacedorApto {
 	public void setId_lista(Integer id_lista) {
 		this.id_lista = id_lista;
 	}
-	public Integer getId_sol_serv() {
-		return id_sol_serv;
+	public Integer getIdsolserv() {
+		return idsolserv;
 	}
-	public void setId_sol_serv(Integer id_sol_serv) {
-		this.id_sol_serv = id_sol_serv;
+	public void setIdsolserv(Integer idsolserv) {
+		this.idsolserv = idsolserv;
 	}
 	public Integer getEstado_sol_serv() {
 		return estado_sol_serv;
@@ -111,6 +113,7 @@ public class ServicioHacedorApto {
 		this.hacedor_apto = hacedor_apto;
 	}
 	
+		
 	
 	
 }
